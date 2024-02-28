@@ -12,7 +12,7 @@ const StyledSpan = styled.span`
   background: ${grayScale.lv1};
   border-radius: 0.4rem;
 
-  font-weight: 600;
+  font-weight: 700;
   user-select: none;
 `;
 

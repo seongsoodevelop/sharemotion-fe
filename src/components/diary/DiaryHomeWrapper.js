@@ -1,4 +1,4 @@
-export default function DiaryHomeWrapper({ children }) {
+export default function DiaryHomeWrapper({ children, style }) {
   return (
     <div
       style={{
@@ -7,6 +7,7 @@ export default function DiaryHomeWrapper({ children }) {
         justifyContent: "center",
         paddingTop: "1rem",
         paddingBottom: "1rem",
+        ...style,
       }}
     >
       <div
