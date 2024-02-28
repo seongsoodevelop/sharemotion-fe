@@ -27,7 +27,7 @@ export default function HomeBanner() {
         }}
       />
       <div style={{ fontWeight: 800, fontSize: "1.2rem" }}>개발 완료</div>
-      {["Kakao 로그인", "글 보기"].map((o, i) => (
+      {["Kakao 로그인", "글 보기", "글 쓰기"].map((o, i) => (
         <div key={i}>{o}</div>
       ))}
     </div>
