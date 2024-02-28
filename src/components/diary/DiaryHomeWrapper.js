@@ -5,6 +5,7 @@ export default function DiaryHomeWrapper({ children, style }) {
         width: "100%",
         display: "flex",
         justifyContent: "center",
+        alignItems: "center",
         paddingTop: "1rem",
         paddingBottom: "1rem",
         ...style,
@@ -17,6 +18,7 @@ export default function DiaryHomeWrapper({ children, style }) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          alignItems: "center",
           padding: "0 1rem",
         }}
       >
