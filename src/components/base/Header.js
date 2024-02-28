@@ -68,9 +68,9 @@ export default function Header() {
             }}
             onClick={() => {
               if (auth.isLogged) {
-                navigate("/auth/login");
-              } else {
                 navigate("/mypage");
+              } else {
+                navigate("/auth/login");
               }
             }}
           >
