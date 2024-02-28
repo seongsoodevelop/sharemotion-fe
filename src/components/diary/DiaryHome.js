@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DiaryTag } from ".";
+import { DiaryContent, DiaryTag } from ".";
 import { textColorScale } from "@lib/palette";
 import moment from "moment";
 import { shadow } from "@lib/styleUtils";
@@ -21,12 +21,12 @@ export default function DiaryHome({ data, lock }) {
   const tag_string = data.tag_string.trim().split(" ");
   return (
     <DiaryWrapper>
-      <div style={{ marginBottom: "0.5rem" }}>
+      <div style={{ marginBottom: "0.25rem" }}>
         {tag_string.map((o, i) => (
           <DiaryTag key={i}>{o}</DiaryTag>
         ))}
       </div>
-      {lock ? "- 잠김 -" : data.content}
+      <DiaryContent>{lock ? "- 잠김 -" : data.content}</DiaryContent>
       <div style={{ marginTop: "0.5rem", color: textColorScale.lv2 }}>
         {moment(data.create_at).format("YYYY-MM-DD HH:mm")}
       </div>
