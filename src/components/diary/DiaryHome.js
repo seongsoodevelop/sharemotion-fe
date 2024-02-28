@@ -5,6 +5,8 @@ import moment from "moment";
 import { shadow } from "@lib/styleUtils";
 
 const DiaryWrapper = styled.div`
+  width: 100%;
+
   background: white;
 
   margin-bottom: 1rem;

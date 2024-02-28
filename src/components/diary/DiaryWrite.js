@@ -6,6 +6,8 @@ import DiaryTextArea from "./DiaryTextArea";
 import { DiaryButton } from ".";
 
 const DiaryWrapper = styled.div`
+  width: 100%;
+
   padding-top: 1rem;
 
   background: white;
