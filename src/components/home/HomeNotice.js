@@ -1,10 +1,7 @@
-import { grayScale } from "@lib/palette";
-
 export default function HomeBanner() {
   return (
     <div
       style={{
-        borderBottom: `solid 0.1rem ${grayScale.lv3}`,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",

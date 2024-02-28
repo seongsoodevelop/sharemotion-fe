@@ -14,6 +14,7 @@ export default function Header() {
         top: 0,
         width: "100%",
         display: "flex",
+        alignItems: "center",
         justifyContent: "center",
         borderBottom: `solid 0.15rem ${brandColor}`,
         lineHeight: 1,
@@ -74,7 +75,7 @@ export default function Header() {
               }
             }}
           >
-            {auth.isLogged ? "마이페이지" : "로그인"}
+            {auth.isLogged ? "MY" : "로그인"}
           </div>
         </div>
       </div>
