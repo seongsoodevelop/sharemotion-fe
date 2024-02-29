@@ -66,7 +66,13 @@ export default function Calendar({ data }) {
   };
 
   return (
-    <PageWrapper style={{ userSelect: "none" }}>
+    <PageWrapper
+      style={{
+        userSelect: "none",
+        minHeight: "60rem",
+        alignItems: "flex-start",
+      }}
+    >
       <CalendarControl
         targetDate={targetDate}
         setTargetDate={setTargetDate}
@@ -187,10 +193,9 @@ export default function Calendar({ data }) {
           );
         })}
       </div>
-
-      {diaryList.length > 0 && (
-        <DiaryWrapper>
-          {diaryList.map((o) => {
+      <DiaryWrapper>
+        {diaryList.length > 0 &&
+          diaryList.map((o) => {
             return (
               <DiaryHome
                 data={o}
@@ -199,8 +204,7 @@ export default function Calendar({ data }) {
               />
             );
           })}
-        </DiaryWrapper>
-      )}
+      </DiaryWrapper>
     </PageWrapper>
   );
 }

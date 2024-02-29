@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { TAG_DB } from "@lib/tagList";
 import { useState } from "react";
 import { DiaryTag } from ".";
+import { brandColor } from "@lib/palette";
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -62,6 +63,7 @@ export default function DiaryTagSelect({
               onClick={() => {
                 setType("");
               }}
+              style={{ background: brandColor, color: "white" }}
             >
               돌아가기
             </DiaryTag>
