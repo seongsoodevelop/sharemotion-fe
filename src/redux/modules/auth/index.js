@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as AuthAPI from "@lib/api/auth";
-import { addAPICallActionCase, createAPICallAction } from "@lib/reduxTools.js";
+import { addAPICallActionCase, createAPICallAction } from "@lib/reduxtools";
 import storage from "@lib/storage";
 
 // name

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as DiaryAPI from "@lib/api/diary";
-import { addAPICallActionCase, createAPICallAction } from "@lib/reduxTools.js";
+import { addAPICallActionCase, createAPICallAction } from "@lib/reduxtools";
 
 // name
 const name = "diary";
