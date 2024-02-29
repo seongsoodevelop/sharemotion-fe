@@ -37,7 +37,7 @@ export const slice = createSlice({
           storage.set("loggedInfo", { profile: action.payload });
 
           if (window.location.pathname === "/auth/login") {
-            window.location.pathname = "/";
+            // window.location.pathname = "/";
           }
         },
       },
