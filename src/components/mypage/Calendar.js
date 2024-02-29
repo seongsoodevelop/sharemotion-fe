@@ -132,7 +132,7 @@ export default function Calendar({ data }) {
                     return brandColor;
                   } else {
                     if (moment().format("YYYY-MM-DD") === o) {
-                      return "#fff9db";
+                      return grayScale.lv1;
                     }
                   }
                 };
