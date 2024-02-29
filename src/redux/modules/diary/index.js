@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as DiaryAPI from "@lib/api/diary";
-import { addAPICallActionCase, createAPICallAction } from "@lib/reduxtools";
+import { addAPICallActionCase, createAPICallAction } from "@lib/reduxTools";
 
 // name
 const name = "diary";
@@ -15,6 +15,11 @@ export const diary_query = createAPICallAction(
 export const diary_insert = createAPICallAction(
   `${name}/diary_insert`,
   DiaryAPI.api_insert
+);
+
+export const diary_getUser = createAPICallAction(
+  `${name}/diary_getUser`,
+  DiaryAPI.api_getUser
 );
 
 // initial state
@@ -70,6 +75,21 @@ export const slice = createSlice({
           if (data.length > 10) data.pop();
 
           state.data = data;
+        },
+      },
+      {
+        handleOnPending: true,
+      }
+    );
+    addAPICallActionCase(
+      builder,
+      diary_getUser,
+      {
+        rejected: (state, action) => {
+          state.data = [];
+        },
+        fulfilled: (state, action) => {
+          state.data = action.payload;
         },
       },
       {

@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home, Auth, NotFound } from "@pages";
+import { Home, Auth, NotFound, MyPage } from "@pages";
 import storage from "@lib/storage";
 import { useDispatch, useSelector } from "react-redux";
 import { authSelector, auth_login } from "@redux/modules/auth";
@@ -27,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth/*" element={<Auth />} />
+        <Route path="/mypage/*" element={<MyPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

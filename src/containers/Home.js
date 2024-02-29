@@ -1,11 +1,7 @@
 import { Header, HeaderMargin } from "@components/base";
-import {
-  DiaryButton,
-  DiaryHome,
-  DiaryHomeWrapper,
-  DiaryWrite,
-} from "@components/diary";
+import { DiaryButton, DiaryHome, DiaryWrite } from "@components/diary";
 import { HomeBanner, HomeNotice } from "@components/home";
+import { PageWrapper } from "@components/common";
 import { authSelector } from "@redux/modules/auth";
 import { diarySelector, diary_insert, diary_query } from "@redux/modules/diary";
 import { useEffect, useState } from "react";
@@ -55,11 +51,11 @@ export default function Home() {
       <HeaderMargin />
       <HomeBanner />
       <HomeNotice />
-      <DiaryHomeWrapper style={{ paddingBottom: 0 }}>
+      <PageWrapper style={{ paddingBottom: 0 }}>
         <DiaryWrite submitCallback={handleWriteSubmit} />
-      </DiaryHomeWrapper>
+      </PageWrapper>
       {diary.data.length > 0 && (
-        <DiaryHomeWrapper>
+        <PageWrapper>
           {diary.data.map((o) => {
             return (
               <DiaryHome
@@ -80,7 +76,7 @@ export default function Home() {
           >
             더보기
           </DiaryButton>
-        </DiaryHomeWrapper>
+        </PageWrapper>
       )}
     </>
   );

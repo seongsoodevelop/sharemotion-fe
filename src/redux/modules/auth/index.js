@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as AuthAPI from "@lib/api/auth";
-import { addAPICallActionCase, createAPICallAction } from "@lib/reduxtools";
+import { addAPICallActionCase, createAPICallAction } from "@lib/reduxTools";
 import storage from "@lib/storage";
 
 // name
@@ -9,7 +9,7 @@ const name = "auth";
 // extra actions
 
 export const auth_login = createAPICallAction(
-  `${name}/login`,
+  `${name}/auth_login`,
   AuthAPI.api_login
 );
 
@@ -33,12 +33,18 @@ export const slice = createSlice({
       {
         fulfilled: (state, action) => {
           state.isLogged = true;
-          state.loggedInfo = { profile: action.payload };
-          storage.set("loggedInfo", { profile: action.payload });
+          state.loggedInfo = { profile: { ...action.payload.profile } };
 
           if (window.location.pathname === "/auth/login") {
-            // window.location.pathname = "/";
+            storage.set("loggedInfo", {
+              profile: { ...action.payload.profile },
+              access_token: action.payload.access_token,
+            });
+            window.location.pathname = "/";
           }
+        },
+        rejected: (state, action) => {
+          storage.remove("loggedInfo");
         },
       },
       {

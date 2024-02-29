@@ -1,5 +1,7 @@
-import axios from "axios";
+import * as axiosPlus from "@lib/axiosPlus";
 
-export const api_query = (data) => axios.post(`diary/query`, data);
+export const api_query = (data) => axiosPlus.postWithToken(`diary/query`, data);
 export const api_insert = (data) =>
-  axios.post(`diary/insert`, data, { withCredentials: true });
+  axiosPlus.postWithToken(`diary/insert`, data);
+export const api_getUser = (data) =>
+  axiosPlus.postWithToken(`diary/getUser`, data);

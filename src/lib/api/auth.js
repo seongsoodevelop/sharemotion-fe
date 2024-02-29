@@ -1,4 +1,3 @@
-import axios from "axios";
+import * as axiosPlus from "@lib/axiosPlus";
 
-export const api_login = (data) =>
-  axios.post(`auth/login`, data, { withCredentials: true });
+export const api_login = (data) => axiosPlus.postWithToken(`auth/login`, data);

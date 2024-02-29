@@ -17,7 +17,7 @@ axios.defaults.headers.post["Access-Control-Allow-Origin"] =
   process.env.NODE_ENV === "development"
     ? "http://localhost:8000/"
     : "https://confab112.cafe24.com:8000/";
-axios.defaults.headers.withCredentials = true;
+axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
