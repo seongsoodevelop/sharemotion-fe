@@ -10,8 +10,8 @@ export default function Header() {
   return (
     <div
       style={{
-        position: "fixed",
-        top: 0,
+        // position: "fixed",
+        // top: 0,
         width: "100%",
         display: "flex",
         alignItems: "center",
