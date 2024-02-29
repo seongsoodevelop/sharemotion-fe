@@ -2,12 +2,26 @@ import { PageWrapper } from "@components/common";
 import moment from "moment";
 import { useState } from "react";
 import { CalendarControl } from "./";
-import { brandColor } from "@lib/palette";
+import { brandColor, grayScale } from "@lib/palette";
+import { DiaryHome } from "@components/diary";
+import { getIsDiaryLocked } from "@lib/diaryLock";
+import styled from "styled-components";
+
+const DiaryWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+`;
 
 export default function Calendar({ data }) {
   const [targetDate, setTargetDate] = useState(moment().format("YYYY-MM-DD"));
   const [calendarTargetDate, setCalendarTargetDate] = useState(
     moment().format("YYYY-MM-DD")
+  );
+
+  const diaryList = data.filter(
+    (o) => moment(o.create_at).format("YYYY-MM-DD") === targetDate
   );
 
   let diaryDataIndex = 0;
@@ -101,19 +115,6 @@ export default function Calendar({ data }) {
               {w.map((o) => {
                 let diaryArr = getDiaryArr(o);
 
-                const defaultStyle = {
-                  width: "14.2857%",
-                  height: "4.5rem",
-                  paddingTop: "0.25rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "flex-start",
-                  background: targetDate === o ? brandColor : "white",
-                  borderRadius: "0.4rem",
-                  cursor: "pointer",
-                };
-
                 const makeTagArr = () => {
                   if (diaryArr.length === 0) return [];
                   const res = [];
@@ -123,23 +124,56 @@ export default function Calendar({ data }) {
                   return res;
                 };
 
+                const isMonthSame =
+                  moment(o).month() === moment(calendarTargetDate).month();
+
+                const getBackgroundColor = () => {
+                  if (targetDate === o) {
+                    return brandColor;
+                  } else {
+                    if (moment().format("YYYY-MM-DD") === o) {
+                      return "#fff9db";
+                    }
+                  }
+                };
+
+                const getTextColor = () => {
+                  if (diaryArr.length === 0) {
+                    if (targetDate === o) {
+                      return "white";
+                    } else {
+                      if (isMonthSame) return "black";
+                      else return grayScale.lv4;
+                    }
+                  } else {
+                    if (targetDate === o) {
+                      return "white";
+                    } else {
+                      if (isMonthSame) return brandColor;
+                      else return grayScale.lv4;
+                    }
+                  }
+                };
+
                 return (
                   <div
                     key={o}
                     onClick={() => {
                       setTargetDate(o);
                     }}
-                    style={
-                      diaryArr.length > 0
-                        ? {
-                            ...defaultStyle,
-                            color: targetDate === o ? "white" : brandColor,
-                          }
-                        : {
-                            ...defaultStyle,
-                            color: targetDate === o ? "white" : "black",
-                          }
-                    }
+                    style={{
+                      width: "14.2857%",
+                      height: "4.5rem",
+                      paddingTop: "0.25rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "flex-start",
+                      borderRadius: "0.4rem",
+                      cursor: "pointer",
+                      background: getBackgroundColor(),
+                      color: getTextColor(),
+                    }}
                   >
                     <div>{moment(o).format("DD")}</div>
                     {makeTagArr().map((o, id) => (
@@ -152,6 +186,20 @@ export default function Calendar({ data }) {
           );
         })}
       </div>
+
+      {diaryList.length > 0 && (
+        <DiaryWrapper>
+          {diaryList.map((o) => {
+            return (
+              <DiaryHome
+                data={o}
+                key={o.id}
+                lock={getIsDiaryLocked(o.create_at)}
+              />
+            );
+          })}
+        </DiaryWrapper>
+      )}
     </PageWrapper>
   );
 }
