@@ -164,6 +164,7 @@ export default function Calendar({ data }) {
                     style={{
                       width: "14.2857%",
                       height: "4.5rem",
+                      marginBottom: "0.25rem",
                       paddingTop: "0.25rem",
                       display: "flex",
                       flexDirection: "column",
