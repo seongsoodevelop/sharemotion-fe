@@ -10,10 +10,13 @@ const DiaryWrapper = styled.div`
 
   padding-top: 1rem;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   background: white;
-
   border-radius: 0.4rem;
-
   box-shadow: ${shadow};
 
   user-select: none;
