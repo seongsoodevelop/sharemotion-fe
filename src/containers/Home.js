@@ -72,7 +72,7 @@ export default function Home() {
             boxShadow: shadow,
             borderRadius: "0.4rem",
             paddingTop: "1rem",
-            paddingBottom: "0.75rem",
+            paddingBottom: "0.5rem",
           }}
         >
           <DiaryTag
