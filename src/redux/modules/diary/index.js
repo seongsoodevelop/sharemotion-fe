@@ -17,6 +17,11 @@ export const diary_insert = createAPICallAction(
   DiaryAPI.api_insert
 );
 
+export const diary_update_content = createAPICallAction(
+  `${name}/diary_update_content`,
+  DiaryAPI.api_update_content
+);
+
 export const diary_getUser = createAPICallAction(
   `${name}/diary_getUser`,
   DiaryAPI.api_getUser
@@ -81,6 +86,26 @@ export const slice = createSlice({
         handleOnPending: true,
       }
     );
+
+    addAPICallActionCase(
+      builder,
+      diary_update_content,
+      {
+        fulfilled: (state, action) => {
+          alert("성공적으로 수정되었습니다.");
+
+          const data = state.data.slice();
+          const index = data.findIndex((o) => o.id === action.payload.id);
+          data[index] = { ...data[index], content: action.payload.content };
+
+          state.data = data;
+        },
+      },
+      {
+        handleOnPending: true,
+      }
+    );
+
     addAPICallActionCase(
       builder,
       diary_getUser,

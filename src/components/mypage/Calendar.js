@@ -3,9 +3,11 @@ import moment from "moment";
 import { useState } from "react";
 import { CalendarControl } from "./";
 import { brandColor, grayScale } from "@lib/palette";
-import { DiaryHome } from "@components/diary";
+import { DiaryMyPage } from "@components/diary";
 import { getIsDiaryLocked } from "@lib/diaryLock";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { diary_update_content } from "@redux/modules/diary";
 
 const DiaryWrapper = styled.div`
   width: 100%;
@@ -15,6 +17,8 @@ const DiaryWrapper = styled.div`
 `;
 
 export default function Calendar({ data }) {
+  const dispatch = useDispatch();
+
   const [targetDate, setTargetDate] = useState(moment().format("YYYY-MM-DD"));
   const [calendarTargetDate, setCalendarTargetDate] = useState(
     moment().format("YYYY-MM-DD")
@@ -96,9 +100,9 @@ export default function Calendar({ data }) {
             marginBottom: "1rem",
           }}
         >
-          {["S", "M", "T", "W", "T", "F", "S"].map((o) => (
+          {["S", "M", "T", "W", "T", "F", "S"].map((o, i) => (
             <div
-              key={o}
+              key={i}
               style={{
                 width: "14.2857%",
                 display: "flex",
@@ -197,10 +201,13 @@ export default function Calendar({ data }) {
         {diaryList.length > 0 &&
           diaryList.map((o) => {
             return (
-              <DiaryHome
+              <DiaryMyPage
                 data={o}
                 key={o.id}
                 lock={getIsDiaryLocked(o.create_at)}
+                submitCallback={(data) => {
+                  dispatch(diary_update_content(data));
+                }}
               />
             );
           })}

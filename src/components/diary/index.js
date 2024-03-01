@@ -1,4 +1,5 @@
 export { default as DiaryHome } from "./DiaryHome";
+export { default as DiaryMyPage } from "./DiaryMyPage";
 export { default as DiaryTag } from "./DiaryTag";
 export { default as DiaryButton } from "./DiaryButton";
 export { default as DiaryContent } from "./DiaryContent";
