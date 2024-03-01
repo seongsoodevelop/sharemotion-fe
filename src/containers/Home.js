@@ -102,28 +102,31 @@ export default function Home() {
             전체
           </DiaryTag>
           {TAG_DB.map((o) => (
-            <DiaryTag
-              key={o.type}
-              style={
-                o.type === diaryTagCategory
-                  ? {
-                      background: brandColor,
-                      color: "white",
-                      cursor: "pointer",
-                    }
-                  : { cursor: "pointer" }
-              }
-              onClick={() => {
-                if (diaryTagCategory === o.type) {
-                  setDiaryTagCategory("");
-                } else {
-                  setDiaryTagCategory(o.type);
-                  setPage(1);
+            <>
+              <DiaryTag
+                key={o.type}
+                style={
+                  o.type === diaryTagCategory
+                    ? {
+                        background: brandColor,
+                        color: "white",
+                        cursor: "pointer",
+                      }
+                    : { cursor: "pointer" }
                 }
-              }}
-            >
-              #{o.type}
-            </DiaryTag>
+                onClick={() => {
+                  if (diaryTagCategory === o.type) {
+                    setDiaryTagCategory("");
+                  } else {
+                    setDiaryTagCategory(o.type);
+                    setPage(1);
+                  }
+                }}
+              >
+                #{o.type}
+              </DiaryTag>
+              {o.type === "편안" && <div />}
+            </>
           ))}
         </div>
       </PageWrapper>
