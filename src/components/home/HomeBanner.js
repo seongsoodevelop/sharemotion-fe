@@ -4,6 +4,7 @@ export default function HomeBanner() {
   return (
     <div
       style={{
+        marginBottom: "1rem",
         borderBottom: `solid 0.1rem ${grayScale.lv3}`,
         display: "flex",
         flexDirection: "column",

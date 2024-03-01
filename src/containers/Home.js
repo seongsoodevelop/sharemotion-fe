@@ -5,7 +5,7 @@ import {
   DiaryTag,
   DiaryWrite,
 } from "@components/diary";
-import { HomeBanner, HomeNotice } from "@components/home";
+import { HomeBanner } from "@components/home";
 import { PageWrapper } from "@components/common";
 import { authSelector } from "@redux/modules/auth";
 import { diarySelector, diary_insert, diary_query } from "@redux/modules/diary";
@@ -59,7 +59,6 @@ export default function Home() {
       <Header />
       <HeaderMargin />
       <HomeBanner />
-      <HomeNotice />
       <PageWrapper style={{ paddingBottom: 0 }}>
         <DiaryWrite submitCallback={handleWriteSubmit} />
       </PageWrapper>
