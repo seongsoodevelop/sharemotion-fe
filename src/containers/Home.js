@@ -86,6 +86,11 @@ export default function Home() {
                 : { cursor: "pointer" }
             }
             onClick={() => {
+              if (auth.onPending) {
+                alert("요청 중입니다. 잠시만 기다려주세요");
+                return;
+              }
+
               if (diaryTagCategory === "") {
                 setDiaryTagCategory("");
               } else {
