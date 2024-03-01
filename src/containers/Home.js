@@ -54,6 +54,33 @@ export default function Home() {
     return true;
   };
 
+  const getTagList = (tagList) => {
+    return tagList.map((o) => (
+      <DiaryTag
+        key={o.type}
+        style={
+          o.type === diaryTagCategory
+            ? {
+                background: brandColor,
+                color: "white",
+                cursor: "pointer",
+              }
+            : { cursor: "pointer" }
+        }
+        onClick={() => {
+          if (diaryTagCategory === o.type) {
+            setDiaryTagCategory("");
+          } else {
+            setDiaryTagCategory(o.type);
+            setPage(1);
+          }
+        }}
+      >
+        #{o.type}
+      </DiaryTag>
+    ));
+  };
+
   return (
     <>
       <Header />
@@ -101,36 +128,13 @@ export default function Home() {
           >
             전체
           </DiaryTag>
-          {TAG_DB.map((o) => (
-            <>
-              <DiaryTag
-                key={o.type}
-                style={
-                  o.type === diaryTagCategory
-                    ? {
-                        background: brandColor,
-                        color: "white",
-                        cursor: "pointer",
-                      }
-                    : { cursor: "pointer" }
-                }
-                onClick={() => {
-                  if (diaryTagCategory === o.type) {
-                    setDiaryTagCategory("");
-                  } else {
-                    setDiaryTagCategory(o.type);
-                    setPage(1);
-                  }
-                }}
-              >
-                #{o.type}
-              </DiaryTag>
-              {o.type === "편안" && <div />}
-            </>
-          ))}
+          {getTagList(TAG_DB.slice(0, 1))}
+          <div />
+          {getTagList(TAG_DB.slice(1, 5))}
+          <div />
+          {getTagList(TAG_DB.slice(5, 9))}
         </div>
       </PageWrapper>
-
       {diary.data.length > 0 && (
         <PageWrapper>
           {diary.data.map((o) => {
