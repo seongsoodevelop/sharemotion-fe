@@ -81,6 +81,9 @@ export const slice = createSlice({
 
           state.data = data;
         },
+        rejected: (state, action) => {
+          alert(action.payload);
+        },
       },
       {
         handleOnPending: true,
