@@ -1,4 +1,3 @@
-import { grayScale } from "@lib/palette";
 import { shadow } from "@lib/styleUtils";
 
 export default function HomeBanner() {
