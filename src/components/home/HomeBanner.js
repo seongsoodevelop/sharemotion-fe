@@ -1,11 +1,11 @@
 import { grayScale } from "@lib/palette";
+import { shadow } from "@lib/styleUtils";
 
 export default function HomeBanner() {
   return (
     <div
       style={{
-        marginBottom: "1rem",
-        borderBottom: `solid 0.1rem ${grayScale.lv3}`,
+        width: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -13,6 +13,8 @@ export default function HomeBanner() {
         fontWeight: 700,
         fontSize: "1rem",
         background: "white",
+        boxShadow: shadow,
+        borderRadius: "0.4rem",
       }}
     >
       <div>청년들의 진솔한 감정 이야기들을 만나보세요</div>

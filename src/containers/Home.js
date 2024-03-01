@@ -58,7 +58,9 @@ export default function Home() {
     <>
       <Header />
       <HeaderMargin />
-      <HomeBanner />
+      <PageWrapper style={{ paddingBottom: 0 }}>
+        <HomeBanner />
+      </PageWrapper>
       <PageWrapper style={{ paddingBottom: 0 }}>
         <DiaryWrite submitCallback={handleWriteSubmit} />
       </PageWrapper>
