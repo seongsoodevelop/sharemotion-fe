@@ -74,6 +74,27 @@ export default function Home() {
             paddingBottom: "0.75rem",
           }}
         >
+          <DiaryTag
+            style={
+              "" === diaryTagCategory
+                ? {
+                    background: brandColor,
+                    color: "white",
+                    cursor: "pointer",
+                  }
+                : { cursor: "pointer" }
+            }
+            onClick={() => {
+              if (diaryTagCategory === "") {
+                setDiaryTagCategory("");
+              } else {
+                setDiaryTagCategory("");
+                setPage(1);
+              }
+            }}
+          >
+            전체
+          </DiaryTag>
           {TAG_DB.map((o) => (
             <DiaryTag
               key={o.type}
