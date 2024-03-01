@@ -10,7 +10,7 @@ export default function DiaryReaction({ reaction_string }) {
 
   return (
     <div style={{ marginTop: "0.5rem" }}>
-      {reaction_list.map((o, i) => (
+      {reaction_list.slice(0, 1).map((o, i) => (
         <DiaryTag
           key={i}
           style={{
@@ -19,7 +19,7 @@ export default function DiaryReaction({ reaction_string }) {
           }}
           onClick={() => {}}
         >
-          {REACTION_DB[i]} {o}
+          {REACTION_DB[i]}
         </DiaryTag>
       ))}
     </div>
