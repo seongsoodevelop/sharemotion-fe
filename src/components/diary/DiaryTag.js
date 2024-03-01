@@ -4,7 +4,6 @@ const { grayScale } = require("@lib/palette");
 
 const StyledSpan = styled.span`
   margin-bottom: 0.5rem;
-  margin-right: 0.4rem;
   padding: 0.2rem 0.5rem;
 
   display: inline-block;
@@ -14,6 +13,10 @@ const StyledSpan = styled.span`
 
   font-weight: 700;
   user-select: none;
+
+  & + & {
+    margin-left: 0.4rem;
+  }
 `;
 
 export default StyledSpan;

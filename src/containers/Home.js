@@ -1,5 +1,10 @@
 import { Header, HeaderMargin } from "@components/base";
-import { DiaryButton, DiaryHome, DiaryWrite } from "@components/diary";
+import {
+  DiaryButton,
+  DiaryHome,
+  DiaryTag,
+  DiaryWrite,
+} from "@components/diary";
 import { HomeBanner, HomeNotice } from "@components/home";
 import { PageWrapper } from "@components/common";
 import { authSelector } from "@redux/modules/auth";
@@ -7,6 +12,9 @@ import { diarySelector, diary_insert, diary_query } from "@redux/modules/diary";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsDiaryLocked } from "@lib/diaryLock";
+import { TAG_DB } from "@lib/tagList";
+import { shadow } from "@lib/styleUtils";
+import { brandColor } from "@lib/palette";
 
 export default function Home() {
   const auth = useSelector(authSelector);
@@ -14,11 +22,12 @@ export default function Home() {
   const dispatch = useDispatch();
 
   const [page, setPage] = useState(1);
+  const [diaryTagCategory, setDiaryTagCategory] = useState("");
 
   useEffect(() => {
-    dispatch(diary_query({ page }));
+    dispatch(diary_query({ page, diaryTagCategory }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  }, [page, diaryTagCategory]);
 
   const handleWriteSubmit = (formTag, formText) => {
     if (!auth.isLogged) {
@@ -54,6 +63,44 @@ export default function Home() {
       <PageWrapper style={{ paddingBottom: 0 }}>
         <DiaryWrite submitCallback={handleWriteSubmit} />
       </PageWrapper>
+      <PageWrapper style={{ paddingTop: "1rem", paddingBottom: 0 }}>
+        <div
+          style={{
+            width: "100%",
+            textAlign: "center",
+            boxShadow: shadow,
+            borderRadius: "0.4rem",
+            paddingTop: "1rem",
+            paddingBottom: "0.75rem",
+          }}
+        >
+          {TAG_DB.map((o) => (
+            <DiaryTag
+              key={o.type}
+              style={
+                o.type === diaryTagCategory
+                  ? {
+                      background: brandColor,
+                      color: "white",
+                      cursor: "pointer",
+                    }
+                  : { cursor: "pointer" }
+              }
+              onClick={() => {
+                if (diaryTagCategory === o.type) {
+                  setDiaryTagCategory("");
+                } else {
+                  setDiaryTagCategory(o.type);
+                  setPage(1);
+                }
+              }}
+            >
+              #{o.type}
+            </DiaryTag>
+          ))}
+        </div>
+      </PageWrapper>
+
       {diary.data.length > 0 && (
         <PageWrapper>
           {diary.data.map((o) => {
