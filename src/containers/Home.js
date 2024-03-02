@@ -8,7 +8,12 @@ import {
 import { HomeBanner, HomeNotice } from "@components/home";
 import { PageWrapper } from "@components/common";
 import { authSelector } from "@redux/modules/auth";
-import { diarySelector, diary_insert, diary_query } from "@redux/modules/diary";
+import {
+  diarySelector,
+  diary_getUserLoved,
+  diary_insert,
+  diary_query,
+} from "@redux/modules/diary";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsDiaryLocked } from "@lib/diaryLock";
@@ -26,6 +31,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(diary_query({ page, diaryTagCategory }));
+    dispatch(diary_getUserLoved({}));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, diaryTagCategory]);
 
@@ -162,6 +168,10 @@ export default function Home() {
                   auth.loggedInfo.profile.id === o.auth_id &&
                   getIsDiaryLocked(o.create_at)
                 }
+                loved={
+                  diary.data_loved.findIndex((x) => x.diary_id === o.id) !== -1
+                }
+                onPending={diary.onPending}
               />
             );
           })}

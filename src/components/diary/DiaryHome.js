@@ -19,7 +19,7 @@ const DiaryWrapper = styled.div`
   user-select: none;
 `;
 
-export default function DiaryHome({ data, lock }) {
+export default function DiaryHome({ data, lock, loved, onPending }) {
   const tag_string = data.tag_string.trim().split(" ");
   const dispatch = useDispatch();
   return (
@@ -40,8 +40,13 @@ export default function DiaryHome({ data, lock }) {
         <DiaryReaction
           love={null}
           onClick={() => {
+            if (onPending) {
+              alert("요청 처리 중입니다. 잠시만 기다린 후 다시 시도해주세요");
+              return;
+            }
             dispatch(diary_update_love({ id: data.id }));
           }}
+          loved={loved}
         />
       </div>
     </DiaryWrapper>

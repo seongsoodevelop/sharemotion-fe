@@ -1,6 +1,7 @@
+import { brandColor } from "@lib/palette";
 import { DiaryTag } from ".";
 
-export default function DiaryReaction({ love, callback, onClick }) {
+export default function DiaryReaction({ love, callback, onClick, loved }) {
   return (
     <div
       style={{ marginTop: "0.5rem" }}
@@ -9,17 +10,27 @@ export default function DiaryReaction({ love, callback, onClick }) {
       }}
     >
       <DiaryTag
-        style={{
-          cursor: "pointer",
-          marginBottom: 0,
-        }}
+        style={
+          loved
+            ? {
+                cursor: "pointer",
+                marginBottom: 0,
+                background: brandColor,
+                color: "white",
+              }
+            : {
+                cursor: "pointer",
+                marginBottom: 0,
+                color: brandColor,
+              }
+        }
         onClick={() => {
           if (callback) {
             callback();
           }
         }}
       >
-        ❤️{love !== null ? ` ${love}` : null}
+        ♥{love !== null ? ` ${love}` : null}
       </DiaryTag>
     </div>
   );

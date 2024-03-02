@@ -27,6 +27,11 @@ export const diary_getUser = createAPICallAction(
   DiaryAPI.api_getUser
 );
 
+export const diary_getUserLoved = createAPICallAction(
+  `${name}/diary_getUserLoved`,
+  DiaryAPI.api_getUserLoved
+);
+
 export const diary_update_love = createAPICallAction(
   `${name}/diary_update_love`,
   DiaryAPI.update_love
@@ -37,6 +42,7 @@ export const diary_update_love = createAPICallAction(
 const initialState = {
   onPending: false,
   data: [],
+  data_loved: [],
 };
 
 // slice
@@ -123,6 +129,48 @@ export const slice = createSlice({
         },
         fulfilled: (state, action) => {
           state.data = action.payload;
+        },
+      },
+      {
+        handleOnPending: true,
+      }
+    );
+
+    addAPICallActionCase(
+      builder,
+      diary_update_love,
+      {
+        fulfilled: (state, action) => {
+          let arr = [];
+          if (action.payload.loved) {
+            arr = state.data_loved.slice();
+            arr.push({
+              auth_id: action.payload.auth_id,
+              diary_id: action.payload.diary_id,
+            });
+          } else {
+            arr = state.data_loved.filter(
+              (x) => x.diary_id !== action.payload.diary_id
+            );
+          }
+          state.data_loved = arr;
+        },
+      },
+      {
+        handleOnPending: true,
+      }
+    );
+
+    addAPICallActionCase(
+      builder,
+      diary_getUserLoved,
+      {
+        rejected: (state, action) => {
+          state.data_loved = [];
+        },
+        fulfilled: (state, action) => {
+          const res = action.payload;
+          state.data_loved = res;
         },
       },
       {
