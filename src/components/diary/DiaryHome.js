@@ -3,6 +3,8 @@ import { DiaryContent, DiaryReaction, DiaryTag } from ".";
 import { shadow } from "@lib/styleUtils";
 import { useDispatch } from "react-redux";
 import { diary_update_love } from "@redux/modules/diary";
+import { textColorScale } from "@lib/palette";
+import moment from "moment";
 
 const DiaryWrapper = styled.div`
   width: 100%;
@@ -35,8 +37,17 @@ export default function DiaryHome({ data, lock, loved, onPending }) {
           width: "100%",
           display: "flex",
           justifyContent: "flex-end",
+          alignItems: "flex-end",
         }}
       >
+        <div
+          style={{
+            color: textColorScale.lv2,
+          }}
+        >
+          {moment(data.create_at).format("YYYY-MM-DD HH:mm")}
+        </div>
+        <div style={{ flexGrow: 1 }} />
         <DiaryReaction
           love={null}
           onClick={() => {
