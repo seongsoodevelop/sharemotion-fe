@@ -54,7 +54,7 @@ export default function Header() {
               navigate("/");
             }}
           >
-            Sharemotion
+            sharEmotion
           </div>
           <div style={{ flexGrow: 1 }} />
           <div

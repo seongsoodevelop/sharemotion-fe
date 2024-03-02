@@ -10,7 +10,7 @@ const DiaryTextArea = styled.textarea`
   font-size: 1rem;
   font-family: "Pretendard";
 
-  height: 20rem;
+  height: 13rem;
 
   background: ${grayScale.lv1};
   outline: none;

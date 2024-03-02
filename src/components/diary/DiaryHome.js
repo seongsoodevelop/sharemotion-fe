@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { DiaryContent, DiaryReaction, DiaryTag } from ".";
-import { textColorScale } from "@lib/palette";
-import moment from "moment";
 import { shadow } from "@lib/styleUtils";
 
 const DiaryWrapper = styled.div`
@@ -29,11 +27,14 @@ export default function DiaryHome({ data, lock }) {
         ))}
       </div>
       <DiaryContent>{lock ? "- 잠김 -" : data.content}</DiaryContent>
-      <div style={{ marginTop: "0.5rem", color: textColorScale.lv2 }}>
-        {moment(data.create_at).format("YYYY-MM-DD HH:mm")}
-      </div>
-      <div style={{ width: "100%", display: "flex" }}>
-        <DiaryReaction reaction_string={data.reaction_string} />
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
+      >
+        <DiaryReaction like={data.like} />
       </div>
     </DiaryWrapper>
   );

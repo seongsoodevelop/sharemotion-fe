@@ -1,5 +1,6 @@
 import { Header, HeaderMargin } from "@components/base";
-import { Calendar } from "@components/mypage";
+import { PageWrapper } from "@components/common";
+import { Calendar, MyPageBanner } from "@components/mypage";
 import { authSelector } from "@redux/modules/auth";
 import { diarySelector, diary_getUser } from "@redux/modules/diary";
 import { useEffect } from "react";
@@ -23,6 +24,9 @@ export default function MyP() {
       <>
         <Header />
         <HeaderMargin />
+        <PageWrapper>
+          <MyPageBanner />
+        </PageWrapper>
       </>
     );
   }
@@ -30,7 +34,10 @@ export default function MyP() {
   return (
     <>
       <Header />
-      <HeaderMargin />
+      <HeaderMargin />{" "}
+      <PageWrapper>
+        <MyPageBanner />
+      </PageWrapper>
       <Calendar data={diary.data} />
     </>
   );

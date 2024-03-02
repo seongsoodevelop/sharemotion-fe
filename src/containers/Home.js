@@ -128,11 +128,23 @@ export default function Home() {
           >
             전체
           </DiaryTag>
-          {getTagList(TAG_DB.slice(0, 1))}
-          <div />
-          {getTagList(TAG_DB.slice(1, 5))}
-          <div />
-          {getTagList(TAG_DB.slice(5, 9))}
+          {window.innerWidth >= 1000 ? (
+            getTagList(TAG_DB)
+          ) : window.innerWidth >= 400 ? (
+            <>
+              {getTagList(TAG_DB.slice(0, 5))}
+              <div />
+              {getTagList(TAG_DB.slice(5, 9))}
+            </>
+          ) : (
+            <>
+              {getTagList(TAG_DB.slice(0, 1))}
+              <div />
+              {getTagList(TAG_DB.slice(1, 5))}
+              <div />
+              {getTagList(TAG_DB.slice(5, 9))}
+            </>
+          )}
         </div>
       </PageWrapper>
       {diary.data.length > 0 && (
