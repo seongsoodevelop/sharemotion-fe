@@ -77,6 +77,25 @@ export default function Header() {
           >
             {auth.isLogged ? "MY" : "로그인"}
           </div>
+          {auth.isLogged && (
+            <div
+              style={{
+                padding: "0.5rem 0.6rem",
+                fontSize: "1rem",
+                fontWeight: 700,
+                borderRadius: "0.4rem",
+                background: brandColor,
+                color: "white",
+                cursor: "pointer",
+                marginLeft: "0.2rem",
+              }}
+              onClick={() => {
+                navigate("/mypage/loved");
+              }}
+            >
+              ♥
+            </div>
+          )}
         </div>
       </div>
     </div>
