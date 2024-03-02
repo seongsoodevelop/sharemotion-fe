@@ -64,7 +64,24 @@ export default function DiaryMyPage({ data, lock, submitCallback }) {
           ) : null}
         </>
       ) : (
-        <DiaryContent>{lock ? "- 잠김 -" : data.content}</DiaryContent>
+        <DiaryContent>
+          {lock ? (
+            <>
+              <div>- 잠김 -</div>
+              <div>
+                {Math.ceil(
+                  28 -
+                    moment
+                      .duration(moment().diff(moment(data.create_at)))
+                      .asDays()
+                )}
+                일 후 잠금이 해제됩니다
+              </div>
+            </>
+          ) : (
+            data.content
+          )}
+        </DiaryContent>
       )}
       <div
         style={{
@@ -82,7 +99,7 @@ export default function DiaryMyPage({ data, lock, submitCallback }) {
           {moment(data.create_at).format("YYYY-MM-DD HH:mm")}
         </div>
         <div style={{ flexGrow: 1 }} />
-        <DiaryReaction like={data.like} />
+        <DiaryReaction love={data.love} />
       </div>
     </DiaryWrapper>
   );

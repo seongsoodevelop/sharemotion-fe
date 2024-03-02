@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { DiaryContent, DiaryReaction, DiaryTag } from ".";
 import { shadow } from "@lib/styleUtils";
+import { useDispatch } from "react-redux";
+import { diary_update_love } from "@redux/modules/diary";
 
 const DiaryWrapper = styled.div`
   width: 100%;
@@ -19,6 +21,7 @@ const DiaryWrapper = styled.div`
 
 export default function DiaryHome({ data, lock }) {
   const tag_string = data.tag_string.trim().split(" ");
+  const dispatch = useDispatch();
   return (
     <DiaryWrapper>
       <div style={{ marginBottom: "0.25rem" }}>
@@ -34,7 +37,13 @@ export default function DiaryHome({ data, lock }) {
           justifyContent: "flex-end",
         }}
       >
-        <DiaryReaction like={null} />
+        <DiaryReaction
+          love={null}
+          onClick={() => {
+            alert("12312");
+            dispatch(diary_update_love({ id: data.id }));
+          }}
+        />
       </div>
     </DiaryWrapper>
   );

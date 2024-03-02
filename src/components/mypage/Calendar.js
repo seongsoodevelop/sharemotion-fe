@@ -1,7 +1,7 @@
 import { PageWrapper } from "@components/common";
 import moment from "moment";
 import { useState } from "react";
-import { CalendarControl } from "./";
+import { CalendarControl, RecapNotification } from "./";
 import { brandColor, grayScale } from "@lib/palette";
 import { DiaryMyPage } from "@components/diary";
 import { getIsDiaryLocked } from "@lib/diaryLock";
@@ -69,14 +69,34 @@ export default function Calendar({ data }) {
     return res;
   };
 
+  //
+  const momentRecap = moment(moment().format("YYYY-MM-DD"));
+  momentRecap.subtract(28, "days");
+
+  const diarysToRecap = data.filter(
+    (o) =>
+      moment(o.create_at).format("YYYY-MM-DD") ===
+      momentRecap.format("YYYY-MM-DD")
+  );
+
   return (
     <PageWrapper
       style={{
         userSelect: "none",
         minHeight: "60rem",
         alignItems: "flex-start",
+        paddingTop: "1rem",
       }}
     >
+      {diarysToRecap.length > 0 ? (
+        <RecapNotification
+          data={diarysToRecap[Math.floor(Math.random() * diarysToRecap.length)]}
+          callback={(date) => {
+            setCalendarTargetDate(date);
+            setTargetDate(date);
+          }}
+        />
+      ) : null}
       <CalendarControl
         targetDate={targetDate}
         setTargetDate={setTargetDate}
@@ -164,6 +184,27 @@ export default function Calendar({ data }) {
                     }
                   }
                 };
+
+                if (!isMonthSame) {
+                  return (
+                    <div
+                      key={o}
+                      style={{
+                        width: "14.2857%",
+                        height: "4.5rem",
+                        marginBottom: "0.25rem",
+                        paddingTop: "0.25rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "flex-start",
+                        borderRadius: "0.4rem",
+                        cursor: "pointer",
+                        background: "white",
+                      }}
+                    ></div>
+                  );
+                }
 
                 return (
                   <div

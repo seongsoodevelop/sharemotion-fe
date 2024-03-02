@@ -27,6 +27,11 @@ export const diary_getUser = createAPICallAction(
   DiaryAPI.api_getUser
 );
 
+export const diary_update_love = createAPICallAction(
+  `${name}/diary_update_love`,
+  DiaryAPI.update_love
+);
+
 // initial state
 
 const initialState = {

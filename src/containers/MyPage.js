@@ -34,8 +34,8 @@ export default function MyP() {
   return (
     <>
       <Header />
-      <HeaderMargin />{" "}
-      <PageWrapper>
+      <HeaderMargin />
+      <PageWrapper style={{ paddingBottom: 0 }}>
         <MyPageBanner />
       </PageWrapper>
       <Calendar data={diary.data} />

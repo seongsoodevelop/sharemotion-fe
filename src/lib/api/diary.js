@@ -7,3 +7,6 @@ export const api_update_content = (data) =>
   axiosPlus.postWithToken(`diary/update_content`, data);
 export const api_getUser = (data) =>
   axiosPlus.postWithToken(`diary/getUser`, data);
+
+export const update_love = (data) =>
+  axiosPlus.postWithToken(`diary/update_love`, data);
