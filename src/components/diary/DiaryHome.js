@@ -34,7 +34,7 @@ export default function DiaryHome({ data, lock }) {
           justifyContent: "flex-end",
         }}
       >
-        <DiaryReaction like={data.like} />
+        <DiaryReaction like={null} />
       </div>
     </DiaryWrapper>
   );

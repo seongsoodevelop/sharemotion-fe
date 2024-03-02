@@ -1,6 +1,6 @@
 import { DiaryTag } from ".";
 
-export default function DiaryReaction({ like }) {
+export default function DiaryReaction({ like, callback }) {
   return (
     <div style={{ marginTop: "0.5rem" }}>
       <DiaryTag
@@ -8,9 +8,13 @@ export default function DiaryReaction({ like }) {
           cursor: "pointer",
           marginBottom: 0,
         }}
-        onClick={() => {}}
+        onClick={() => {
+          if (callback) {
+            callback();
+          }
+        }}
       >
-        ❤️{like ? ` ${like}` : null}
+        ❤️{like !== null ? ` ${like}` : null}
       </DiaryTag>
     </div>
   );

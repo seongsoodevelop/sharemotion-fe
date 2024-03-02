@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import { DiaryButton, DiaryContent, DiaryTag, DiaryTextArea } from ".";
+import {
+  DiaryButton,
+  DiaryContent,
+  DiaryReaction,
+  DiaryTag,
+  DiaryTextArea,
+} from ".";
 import { textColorScale } from "@lib/palette";
 import moment from "moment";
 import { shadow } from "@lib/styleUtils";
@@ -60,8 +66,23 @@ export default function DiaryMyPage({ data, lock, submitCallback }) {
       ) : (
         <DiaryContent>{lock ? "- 잠김 -" : data.content}</DiaryContent>
       )}
-      <div style={{ marginTop: "0.5rem", color: textColorScale.lv2 }}>
-        {moment(data.create_at).format("YYYY-MM-DD HH:mm")}
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          marginTop: "0.5rem",
+          alignItems: "flex-end",
+        }}
+      >
+        <div
+          style={{
+            color: textColorScale.lv2,
+          }}
+        >
+          {moment(data.create_at).format("YYYY-MM-DD HH:mm")}
+        </div>
+        <div style={{ flexGrow: 1 }} />
+        <DiaryReaction like={data.like} />
       </div>
     </DiaryWrapper>
   );
