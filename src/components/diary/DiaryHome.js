@@ -40,7 +40,6 @@ export default function DiaryHome({ data, lock }) {
         <DiaryReaction
           love={null}
           onClick={() => {
-            alert("12312");
             dispatch(diary_update_love({ id: data.id }));
           }}
         />
