@@ -19,7 +19,9 @@ export default function DiaryReaction({ love, callback, onClick, loved }) {
                 background: brandColor,
                 color: "white",
                 textAlign: "center",
-                border: `solid 0.125rem ${brandColor}`,
+                boxShadow: `rgba(255, 104, 104, 0.5) 0px 0px 32px -1px`,
+                WebkitBoxShadow: "rgba(255, 104, 104, 0.5) 0px 0px 32px -1px",
+                MozBoxShadow: "rgba(255, 104, 104, 0.5) 0px 0px 32px -1px",
               }
             : {
                 minWidth: "3rem",
@@ -27,8 +29,10 @@ export default function DiaryReaction({ love, callback, onClick, loved }) {
                 marginBottom: 0,
                 background: "white",
                 color: brandColor,
-                border: `solid 0.125rem ${brandColor}`,
                 textAlign: "center",
+                boxShadow: "rgba(255, 104, 104, 0.5) 0px 0px 32px -1px",
+                WebkitBoxShadow: "rgba(255, 104, 104, 0.5) 0px 0px 32px -1px",
+                MozBoxShadow: "rgba(255, 104, 104, 0.5) 0px 0px 32px -1px",
               }
         }
         onClick={() => {
