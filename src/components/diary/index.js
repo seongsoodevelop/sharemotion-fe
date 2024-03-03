@@ -6,3 +6,4 @@ export { default as DiaryContent } from "./DiaryContent";
 export { default as DiaryWrite } from "./DiaryWrite";
 export { default as DiaryTextArea } from "./DiaryTextArea";
 export { default as DiaryReaction } from "./DiaryReaction";
+export { default as DiaryTagSelect } from "./DiaryTagSelect";

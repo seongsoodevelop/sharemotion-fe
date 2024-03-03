@@ -43,13 +43,21 @@ const initialState = {
   onPending: false,
   data: [],
   data_loved: [],
+  form: {
+    content: "",
+    tag_string: "",
+  },
 };
 
 // slice
 export const slice = createSlice({
   name,
   initialState,
-  reducers: {},
+  reducers: {
+    updateForm: (state, action) => {
+      state.form = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     addAPICallActionCase(
       builder,
@@ -184,7 +192,7 @@ export const slice = createSlice({
 export default slice.reducer;
 
 // actions
-// export const {  } = slice.actions;
+export const { updateForm } = slice.actions;
 
 // selectors
 export const diarySelector = (state) => state.diary;

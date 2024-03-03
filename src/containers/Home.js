@@ -41,6 +41,11 @@ export default function Home() {
       return false;
     }
 
+    if (diary.onPending) {
+      alert("요청 처리 중입니다. 잠시만 기다려 주세요 :)");
+      return false;
+    }
+
     if (formTag.trim() === "") {
       alert("태그를 적어도 하나 이상 선택해야 합니다!");
       return false;

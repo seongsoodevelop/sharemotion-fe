@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { shadow } from "@lib/styleUtils";
-import DiaryTagSelect from "./DiaryTagSelect";
-import { useState } from "react";
-import DiaryTextArea from "./DiaryTextArea";
+import { DiaryTagSelect, DiaryTextArea } from "./";
 import { DiaryButton } from ".";
+import { useDispatch, useSelector } from "react-redux";
+import { diarySelector, updateForm } from "@redux/modules/diary";
 
 const DiaryWrapper = styled.div`
   width: 100%;
@@ -23,8 +23,10 @@ const DiaryWrapper = styled.div`
 `;
 
 export default function DiaryWrite({ submitCallback }) {
-  const [formTag, setFormTag] = useState("");
-  const [formText, setFormText] = useState("");
+  const dispatch = useDispatch();
+  const diary = useSelector(diarySelector);
+  const formTag = diary.form.tag_string;
+  const formText = diary.form.content;
 
   return (
     <DiaryWrapper>
@@ -40,14 +42,14 @@ export default function DiaryWrite({ submitCallback }) {
           if (arr.findIndex((o) => o === `#${tag}`) !== -1) return;
           arr.push(`#${tag}`);
           const res = arr.join(" ");
-          setFormTag(res);
+          dispatch(updateForm({ ...diary.form, tag_string: res }));
         }}
         callbackRemove={(index) => {
           let str = formTag;
           const arr = str.trim().split(" ");
           arr.splice(index, 1);
           const res = arr.join(" ");
-          setFormTag(res);
+          dispatch(updateForm({ ...diary.form, tag_string: res }));
         }}
       />
       <div
@@ -62,7 +64,9 @@ export default function DiaryWrite({ submitCallback }) {
           placeholder="오늘 있었던 일에 대해 이야기해 주세요"
           value={formText}
           onChange={(e) => {
-            setFormText(e.currentTarget.value);
+            dispatch(
+              updateForm({ ...diary.form, content: e.currentTarget.value })
+            );
           }}
           maxLength={399}
         />
@@ -70,10 +74,7 @@ export default function DiaryWrite({ submitCallback }) {
       <DiaryButton
         style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
         onClick={() => {
-          if (submitCallback(formTag.trim(), formText.trim())) {
-            setFormTag("");
-            setFormText("");
-          }
+          submitCallback(formTag.trim(), formText.trim());
         }}
       >
         게시하기 ({`${formText.length}자 / 400자`})
