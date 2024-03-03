@@ -17,6 +17,8 @@ const StyledSpan = styled.span`
   & + & {
     margin-left: 0.4rem;
   }
+
+  transition: background 0.25s;
 `;
 
 export default StyledSpan;

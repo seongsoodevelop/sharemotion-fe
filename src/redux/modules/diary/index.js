@@ -149,19 +149,23 @@ export const slice = createSlice({
       diary_update_love,
       {
         fulfilled: (state, action) => {
-          let arr = [];
+          let arr = state.data.slice();
+          const element = arr.find((x) => x.id === action.payload.diary_id);
+          if (element) element.love += action.payload.loved ? 1 : -1;
+          let arr_loved = [];
           if (action.payload.loved) {
-            arr = state.data_loved.slice();
-            arr.push({
+            arr_loved = state.data_loved.slice();
+            arr_loved.push({
               auth_id: action.payload.auth_id,
               diary_id: action.payload.diary_id,
             });
           } else {
-            arr = state.data_loved.filter(
+            arr_loved = state.data_loved.filter(
               (x) => x.diary_id !== action.payload.diary_id
             );
           }
-          state.data_loved = arr;
+          state.data = arr;
+          state.data_loved = arr_loved;
         },
       },
       {

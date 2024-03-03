@@ -19,12 +19,15 @@ export default function DiaryReaction({ love, callback, onClick, loved }) {
                 background: brandColor,
                 color: "white",
                 textAlign: "center",
+                border: `solid 0.125rem ${brandColor}`,
               }
             : {
                 minWidth: "3rem",
                 cursor: "pointer",
                 marginBottom: 0,
+                background: "white",
                 color: brandColor,
+                border: `solid 0.125rem ${brandColor}`,
                 textAlign: "center",
               }
         }
