@@ -13,15 +13,19 @@ export default function DiaryReaction({ love, callback, onClick, loved }) {
         style={
           loved
             ? {
+                minWidth: "3rem",
                 cursor: "pointer",
                 marginBottom: 0,
                 background: brandColor,
                 color: "white",
+                textAlign: "center",
               }
             : {
+                minWidth: "3rem",
                 cursor: "pointer",
                 marginBottom: 0,
                 color: brandColor,
+                textAlign: "center",
               }
         }
         onClick={() => {
