@@ -5,7 +5,7 @@ import {
   DiaryTag,
   DiaryWrite,
 } from "@components/diary";
-import { HomeBanner, HomeNotice } from "@components/home";
+import { HomeBanner } from "@components/home";
 import { PageWrapper } from "@components/common";
 import { authSelector } from "@redux/modules/auth";
 import {
