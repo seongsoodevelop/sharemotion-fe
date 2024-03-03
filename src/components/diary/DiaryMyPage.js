@@ -8,7 +8,7 @@ import {
 } from ".";
 import { textColorScale } from "@lib/palette";
 import moment from "moment";
-import { shadow } from "@lib/styleUtils";
+import { shadowCSS } from "@lib/styleUtils";
 import { useState } from "react";
 import { getCanEditDiary } from "@lib/diaryLock";
 
@@ -22,7 +22,7 @@ const DiaryWrapper = styled.div`
 
   border-radius: 0.4rem;
 
-  box-shadow: ${shadow};
+  ${shadowCSS}
 
   user-select: none;
 `;

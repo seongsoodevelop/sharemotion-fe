@@ -1,3 +1,5 @@
+import { shadowCSSObject } from "@lib/styleUtils";
+
 export default function HomeNotice() {
   return (
     <div
@@ -10,6 +12,7 @@ export default function HomeNotice() {
         fontSize: "1rem",
         background: "#ffd43b",
         textAlign: "center",
+        ...shadowCSSObject,
       }}
     >
       <div style={{ fontWeight: 800, fontSize: "1.2rem" }}>제목</div>

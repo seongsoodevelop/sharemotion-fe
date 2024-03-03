@@ -1,4 +1,4 @@
-import { shadow } from "@lib/styleUtils";
+import { shadowCSSObject } from "@lib/styleUtils";
 
 export default function HomeBanner() {
   return (
@@ -12,8 +12,8 @@ export default function HomeBanner() {
         fontWeight: 700,
         fontSize: "1rem",
         background: "white",
-        boxShadow: shadow,
         borderRadius: "0.4rem",
+        ...shadowCSSObject,
       }}
     >
       <div>작성 후 1일간 수정이 가능하지만</div>

@@ -1,5 +1,5 @@
 import { brandColor } from "@lib/palette";
-import { shadow } from "@lib/styleUtils";
+import { shadowCSS } from "@lib/styleUtils";
 import moment from "moment";
 import styled from "styled-components";
 
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   background: ${brandColor};
   color: white;
 
-  box-shadow: ${shadow};
+  ${shadowCSS}
 
   display: flex;
   flex-direction: column;

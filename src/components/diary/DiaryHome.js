@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { DiaryContent, DiaryReaction, DiaryTag } from ".";
-import { shadow } from "@lib/styleUtils";
+import { shadowCSS } from "@lib/styleUtils";
 import { useDispatch } from "react-redux";
 import { diary_update_love } from "@redux/modules/diary";
 import { textColorScale } from "@lib/palette";
@@ -16,7 +16,7 @@ const DiaryWrapper = styled.div`
 
   border-radius: 0.4rem;
 
-  box-shadow: ${shadow};
+  ${shadowCSS}
 
   user-select: none;
 `;

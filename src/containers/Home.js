@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsDiaryLocked } from "@lib/diaryLock";
 import { TAG_DB } from "@lib/tagList";
-import { shadow } from "@lib/styleUtils";
+import { shadowCSSObject } from "@lib/styleUtils";
 import { brandColor } from "@lib/palette";
 
 export default function Home() {
@@ -110,7 +110,7 @@ export default function Home() {
           style={{
             width: "100%",
             textAlign: "center",
-            boxShadow: shadow,
+            ...shadowCSSObject,
             borderRadius: "0.4rem",
             paddingTop: "1rem",
             paddingBottom: "0.5rem",
