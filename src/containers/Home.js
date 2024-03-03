@@ -177,6 +177,7 @@ export default function Home() {
                   diary.data_loved.findIndex((x) => x.diary_id === o.id) !== -1
                 }
                 onPending={diary.onPending}
+                isLogged={auth.isLogged}
               />
             );
           })}

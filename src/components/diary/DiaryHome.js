@@ -21,7 +21,7 @@ const DiaryWrapper = styled.div`
   user-select: none;
 `;
 
-export default function DiaryHome({ data, lock, loved, onPending }) {
+export default function DiaryHome({ data, lock, loved, onPending, isLogged }) {
   const tag_string = data.tag_string.trim().split(" ");
   const dispatch = useDispatch();
   return (
@@ -51,6 +51,10 @@ export default function DiaryHome({ data, lock, loved, onPending }) {
         <DiaryReaction
           love={null}
           onClick={() => {
+            if (!isLogged) {
+              alert("로그인 후 다시 시도해주세요");
+              return;
+            }
             if (onPending) {
               alert("요청 처리 중입니다. 잠시만 기다린 후 다시 시도해주세요");
               return;
