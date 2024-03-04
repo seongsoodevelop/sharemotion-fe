@@ -13,26 +13,24 @@ export default function DiaryReaction({ love, callback, onClick, loved }) {
         style={
           loved
             ? {
-                minWidth: "3rem",
                 cursor: "pointer",
                 marginBottom: 0,
                 background: brandColor,
                 color: "white",
                 textAlign: "center",
-                boxShadow: `rgba(255, 104, 104, 0.5) 0px 0px 32px -1px`,
-                WebkitBoxShadow: "rgba(255, 104, 104, 0.5) 0px 0px 32px -1px",
-                MozBoxShadow: "rgba(255, 104, 104, 0.5) 0px 0px 32px -1px",
+                boxShadow: "rgba(255, 104, 104, 0.25) 0px 0px 28px -1px",
+                WebkitBoxShadow: "rgba(255, 104, 104, 0.25) 0px 0px 28px -1px",
+                MozBoxShadow: "rgba(255, 104, 104, 0.25) 0px 0px 28px -1px",
               }
             : {
-                minWidth: "3rem",
                 cursor: "pointer",
                 marginBottom: 0,
                 background: "white",
                 color: brandColor,
                 textAlign: "center",
-                boxShadow: "rgba(255, 104, 104, 0.5) 0px 0px 32px -1px",
-                WebkitBoxShadow: "rgba(255, 104, 104, 0.5) 0px 0px 32px -1px",
-                MozBoxShadow: "rgba(255, 104, 104, 0.5) 0px 0px 32px -1px",
+                boxShadow: "rgba(255, 104, 104, 0.25) 0px 0px 28px -1px",
+                WebkitBoxShadow: "rgba(255, 104, 104, 0.25) 0px 0px 28px -1px",
+                MozBoxShadow: "rgba(255, 104, 104, 0.25) 0px 0px 28px -1px",
               }
         }
         onClick={() => {
@@ -41,7 +39,7 @@ export default function DiaryReaction({ love, callback, onClick, loved }) {
           }
         }}
       >
-        ♥{love !== null ? ` ${love}` : null}
+        ♥{love ? ` ${love}` : null}
       </DiaryTag>
     </div>
   );

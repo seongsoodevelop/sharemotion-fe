@@ -30,7 +30,7 @@ export default function Login() {
           justifyContent: "center",
         }}
       >
-        Sharemotion
+        sharEmotion
         <br />
         여러분의 감정에
         <br />

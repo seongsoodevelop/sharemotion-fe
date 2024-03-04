@@ -49,7 +49,6 @@ export default function DiaryHome({ data, lock, loved, onPending, isLogged }) {
         </div>
         <div style={{ flexGrow: 1 }} />
         <DiaryReaction
-          love={data.love}
           onClick={() => {
             if (!isLogged) {
               alert("로그인 후 다시 시도해주세요");
