@@ -99,6 +99,10 @@ export const slice = createSlice({
           if (data.length > 10) data.pop();
 
           state.data = data;
+          state.form = {
+            content: "",
+            tag_string: "",
+          };
         },
         rejected: (state, action) => {
           alert(action.payload);
