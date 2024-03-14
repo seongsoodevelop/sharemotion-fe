@@ -72,7 +72,11 @@ export default function DiaryMyPage({ data, lock, submitCallback }) {
                 {Math.ceil(
                   28 -
                     moment
-                      .duration(moment().diff(moment(data.create_at)))
+                      .duration(
+                        moment(moment().format("YYYY-MM-DD")).diff(
+                          moment(moment(data.create_at).format("YYYY-MM-DD"))
+                        )
+                      )
                       .asDays()
                 )}
                 일 후 잠금이 해제됩니다

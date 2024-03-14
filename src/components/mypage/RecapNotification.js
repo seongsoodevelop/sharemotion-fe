@@ -22,15 +22,6 @@ const Wrapper = styled.div`
   user-select: none;
 `;
 
-const StyledBtn = styled.div`
-  background: white;
-  color: ${brandColor};
-  padding: 0.2rem 0.8rem;
-  border-radius: 0.4rem;
-  font-weight: 700;
-  cursor: pointer;
-`;
-
 export default function RecapNotification({ data, callback }) {
   return (
     <Wrapper>
@@ -38,15 +29,16 @@ export default function RecapNotification({ data, callback }) {
         {moment(data.create_at).format("MM월 DD일의 나")}
       </div>
       <div style={{ width: "100%", marginBottom: "0.75rem" }}>
-        {data.content.split(" ").slice(0, 10).join(" ")}{" "}
+        {data.content.split(" ").slice(0, 10).join(" ")}
+        <div
+          style={{ textDecoration: "underline" }}
+          onClick={() => {
+            callback(moment(data.create_at).format("YYYY-MM-DD"));
+          }}
+        >
+          {"···"} 더보기
+        </div>
       </div>
-      <StyledBtn
-        onClick={() => {
-          callback(moment(data.create_at).format("YYYY-MM-DD"));
-        }}
-      >
-        더보기
-      </StyledBtn>
     </Wrapper>
   );
 }
